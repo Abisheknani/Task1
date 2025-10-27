@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* --Global page style-- */
+        html, body { 
+            margin:0; padding:0; height:100%; 
+            font-family:Arial,Helvetica,sans-serif; 
+            background:#979696; color:#fff; }
+        .container {
+            max-width:1400px; 
+            margin:5px; 
+            padding:3px;
+            border: #000 solid 2px ;
+            box-sizing:border-box; }
+
+        /* --
+        Header bar
+        -- */
+        .header {
+            display:flex; align-items:center; 
+            
+            background:#979696; 
+            padding:0px;
+            font-size:14px;
+            margin: 0;
+            border: #000 solid 2px ;
+        }
+        .detile{
+            display: flex;
+            justify-self: start;
+        }
+        
+            
+    
+           
+        
+        .date {
+            color: #000;
+            margin: 0;
+            padding:10px;
+            background-color:#979696; 
+         }
+        .date2{
+            background-color: #0066cc;
+            margin: 0;
+            padding: 10px;
+        }
+        .operater{
+            background-color:#979696;  
+            margin: 0;
+            padding: 10px;
+        }
+        .operater2{
+            background-color:#ffffff;  
+            margin: 0;
+            padding: 10px;
+            color: #000;
+        }
+        .shift{
+            background-color:#979696;  
+            margin: 0;
+            padding: 10px;
+
+        }
+        .shift2{
+            background-color:#ffffff;  
+            margin: 0;
+            padding: 10px;
+            color: #000
+
+        }
+         
+
+         
+        .header .shift  {
+             margin-left:20px; }
+        .header .status { 
+            
+            display:flex; gap:8px; }
+       
+        .header .back   { background:#c00; color:#fff; padding:4px 12px; border-radius:3px; cursor:pointer; }
+        .status-bar {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            margin-left: 100px;
+            border: none;
+
+         }
+         .status-light {
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
+            text-align: center;
+            font-weight: bold;
+            line-height: 27px;
+            margin-right: 6px;
+        
+        }
+        .status-green { background: #18e306; color: #0a0;}
+        .status-yellow { background: #ffd800; color: #bba900;}
+        .status-red { background: #ee1818; color: #fff;}
+        .status-blue { background: #0054fe; color: #fff;}
+        .back-btn {
+            background: #e13c12;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            padding: 7px 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 18px;
+        }
+
+        /* --
+        Machine / Customer bar
+        -- */
+        .machine-bar {
+            display:flex; align-items:center; margin:3px; gap:10px; font-size:15px;
+            border: #000 solid 1px;
+        }
+        .M_Head{
+            background-color:#979696;  
+            margin: 0;
+            padding: 10px;
+            color:#000;
+        }
+        .M_Content{
+
+            background-color:#ffffff;  
+            margin: 0;
+            padding: 10px 30px;
+            color: #000
+            
+        }
+        .customer{
+            width: 600px;
+            background-color: orangered;
+            color: orangered;
+            margin: 0px;
+            padding: 1px;
+            border: #000 solid 1px;
+        }
+        .com{
+            background-color: #000;
+            padding: 1px;
+        }
+
+        /* --
+        Title
+       -- */
+        .title {
+            display: flex;
+            align-self: start;
+            background-color: #979696;
+            border: #000 solid 1px;
+
+        }
+        .title1{
+            background-color: #ee1818;
+            padding: 8px 400px;
+            border: rgb(206, 206, 206) solid 2px;
+        }
+
+        .title2{
+            background-color: #979696;
+            border: #000 solid 1px;
+            padding: 5px 10px;
+        }
+        .title3{
+            background-color: white;
+            padding: 5px 10px;
+            margin: 0px 20px;
+        }
+        /* --
+        Measurement grid
+        -- */
+        .grid {
+            display:grid;
+            grid-template-rows: minmax(2);
+            grid-template-columns: repeat(4, 1fr);
+            gap:8px;
+            margin-bottom:12px;
+            border: white 3px solid;
+            background-color:white ;
+            height: 100%;
+            width: 600px 800px ;
+        }
+        .cell {
+            background:#979696; padding:6px; border:rgb(0, 0, 0) solid 1px; text-align:center;
+            font-size:14px;
+            height: 100px;
+
+        }
+        .cell label { display:block; font-weight:bold; margin-bottom:4px; }
+        .limits { display:flex; justify-content:space-between; font-size:12px; }
+        .value {
+            font-size:20px; font-weight:bold; margin-top:4px;
+        }
+        .ok    { background:#ff0; color:#000; }
+        .nok   { background:#c00; color:#fff; }
+
+        label{
+            background-color: #000;
+            color: white;
+            padding: 3px 10px;
+        }
+
+        /* --
+        Right panel (parameter list)
+        -- */
+        .right-panel {
+            
+            width: 360px;; background: #979696; padding:0px; border-radius:4px;
+            display: flex;
+        }
+        .para-table {
+            width:100%; border-collapse:collapse; font-size:14px ;
+            border: #000 solid 3px;
+            padding-left:0px ;
+            background-color: white;
+        }
+        .para-table th, .para-table td { padding:4px 6px; text-align:left;
+             }
+        .para-table th { background:#1b67d8; }
+        .para-table input { width:80px; padding:2px; }
+        th{
+            background-color: #0066cc;
+            color:white;
+            border-collapse: 1px solid black;
+
+        }
+        td{
+            color:black;
+            border-collapse: 1px solid black;
+        }
+
+        /* --
+        Buttons column
+        -- */
+        .btn-col {
+            display: flex; flex-direction:column; gap:8px; margin-left:12px;
+        }
+        .btn {
+            padding:12px 20px; text-align:center; border:none; border-radius:4px;
+            font-weight:bold; cursor:pointer; color:#fff;
+        }
+        .btn.master { background:#0066cc; }
+        .btn.start  { background:#0a0; }
+        .btn.stop   { background:#c60; }
+        .btn.store  { background:#0a0; }
+        .btn.enter  { background:#0a0; font-size:18px; }
+        .btn.back   { background:#963; }
+
+        /* -------------------------------------------------
+        Footer input bar
+        ------------------------------------------------- */
+        .footer {
+            background:#d4a017; color:#000; text-align:center; padding:12px;
+            font-weight:bold; font-size:16px; margin-top:20px; border-radius:4px;
+        }
+
+        /* --
+        Clearfix
+       -- */
+        .clearfix::after { content:""; display:table; clear:both; }
+       
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <!-- ==================== HEADER ==================== -->
+    <div class="header">
+        <div class="detile">
+            <div class="date detile">DATE : </div>
+            <div class="date2">26/10/2025 3:45:38 PM</div>
+            <div class="operater">OPERATOR : </div><div class="operater2"> VIJAYA PANDIYAN</div>
+            <div class="shift">SHIFT :</div><div class="shift2">SHIFT-3</div>
+        </div>
+        <div class="status-bar">
+            <div class="status-light status-green"> 0 </div>
+            <div class="status-light status-yellow"> 0 </div>
+            <div class="status-light status-red"> 0 </div>
+            <div class="status-light status-blue"> 0 </div>
+
+            <div class="back">BACK</div>
+            
+        </div>
+        
+    </div>
+
+    <!-- ==================== MACHINE BAR ==================== -->
+    <div class="machine-bar">
+        <div class="M_Head">MACHINE:</div> 
+        <div class="M_Content">M1</div>
+        <div class="M_Content">GM</div>
+        <div class="M_Head">CUSTOMER: </div>
+        <div class="M_Content">FIX-01</div>
+        <div class="customer">CONDENT </div>
+        <div class="com">COMMUNICATION <span style="color:#c00;">●</span></div>
+    </div>
+
+    <!-- ==================== TITLE ==================== -->
+    <div class="title">
+       <div class="title1"> DO MEASUREMENT</div>
+       <div class="title2">PART STATUS</div>
+       <div class="title3">PART NAME</div>
+    </div>
+    
+
+    <div class="clearfix">
+
+        <!-- ==================== MEASUREMENT GRID ==================== -->
+        <div style="float:left; width:calc(100% - 390px);">
+            <div class="grid">
+
+                <!-- DISTANCE 1 -->
+                <div class="cell">
+                    <label>DISTANCE 1</label>
+                    <div class="limits"><span>LSL 36.060</span><span>NOM 0.000</span><span>USL 36.240</span></div>
+                    <div class="value ok">36.2500</div>
+                </div>
+
+                <!-- DISTANCE 2 -->
+                <div class="cell">
+                    <label>DISTANCE 2</label>
+                    <div class="limits"><span>LSL 36.060</span><span>NOM 36.150</span><span>USL 36.240</span></div>
+                    <div class="value nok">7.4800</div>
+                </div>
+
+                <!-- PAD THICKNESS 1 -->
+                <div class="cell">
+                    <label>PAD THICKNESS 1</label>
+                    <div class="limits"><span >LSL 6.910</span></p><span>NOM 7.000</span><span>USL 7.090</span></div>
+                    <div class="value nok">-50.7700</div>
+                </div>
+
+                <!-- PAD THICKNESS 2 -->
+                <div class="cell">
+                    <label>PAD THICKNESS 2</label>
+                    <div class="limits"><span>LSL 6.910</span><span>NOM 7.000</span><span>USL 7.090</span></div>
+                    <div class="value nok">-50.7700</div>
+                </div>
+
+                <!-- DISTANCE 3 -->
+                <div class="cell">
+                    <label>DISTANCE 3</label>
+                    <div class="limits"><span>LSL 11.810</span><span>NOM 11.840</span><span>USL 11.870</span></div>
+                    <div class="value nok">-41.1700</div>
+                </div>
+
+                <!-- DISTANCE 4 -->
+                <div class="cell">
+                    <label>DISTANCE 4</label>
+                    <div class="limits"><span>LSL 11.810</span><span>NOM 11.840</span><span>USL 11.870</span></div>
+                    <div class="value nok">-41.1700</div>
+                </div>
+
+                <!-- EMPTY CELLS (Parameter Name placeholders) -->
+                <div class="cell"><label>Parameter Name</label></div>
+                <div class="cell"><label>Parameter Name</label></div>
+
+            </div>
+        </div>
+
+        <!-- ==================== RIGHT PANEL ==================== -->
+        <div class="right-panel">
+            <table class="para-table">
+                <thead><tr><th>PARA NAME</th><th>OUTPUT</th></tr></thead>
+                <tbody>
+                    <tr><td>1 DISTANCE 1</td><td><input type="text"></td></tr>
+                    <tr><td>2 DISTANCE 2</td><td><input type="text"></td></tr>
+                    <tr><td>3 PAD THICKNESS 1</td><td><input type="text"></td></tr>
+                    <tr><td>4 PAD THICKNESS 2</td><td><input type="text"></td></tr>
+                    <tr><td>5 DISTANCE 3</td><td><input type="text"></td></tr>
+                    <tr><td>6 DISTANCE 4</td><td><input type="text"></td></tr>
+                    <tr></tr>
+                </tbody>
+                
+            </table>
+            
+                <div  class ="side-btn"style="float:right; margin-top:20px;">
+                    <div class="btn-col">
+                        <button class="btn master">MASTER [F1]</button>
+                        <button class="btn start">START [F4]</button>
+                        <button class="btn stop">STOP [F5]</button>
+                        <button class="btn store">STORE</button>
+                        <button class="btn back">BACK [F7]</button>
+                    </div>
+                    <div style="margin-top:15px; padding: 5px 10px; ">
+                        <button class="btn enter">ENTER</button>
+                    </div>
+                </div>
+
+            
+        </div>
+
+    </div>
+
+    <!-- ==================== BUTTON COLUMN ==================== -->
+    
+
+    <!-- ==================== FOOTER ==================== -->
+    <div class="footer">ENTER COMP SR.NO</div>
+
+</div>
+</body>
+</html>
